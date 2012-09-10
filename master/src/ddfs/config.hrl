@@ -35,7 +35,7 @@
 % HTTP_MAX_CONNS * 2 * 2 + 32 < Maximum number of file descriptors, where
 % 2 = Get and put, 2 = two FDs required for each connection (connection
 % itself + a file it accesses), 32 = a guess how many extra fds is needed.
--define(HTTP_MAX_CONNS, 128).
+-define(HTTP_MAX_CONNS, 1024).
 
 % How long to keep a PUT request in queue if the system is busy.
 -define(PUT_WAIT_TIMEOUT, (1 * ?MINUTE)).
@@ -83,7 +83,7 @@
 % The longest potential interval between messages in the GC protocol;
 % used to ensure GC makes forward progress.  This can be set to the
 % estimated time to traverse all the volumes on a DDFS node.
--define(GC_PROGRESS_INTERVAL, (30 * ?MINUTE)).
+-define(GC_PROGRESS_INTERVAL, (120 * ?MINUTE)).
 
 % Number of extra replicas (i.e. lost replicas recovered during GC) to
 % allow before deleting extra replicas.
